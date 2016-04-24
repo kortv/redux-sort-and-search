@@ -23,7 +23,8 @@
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/prop-types": 0,
-    "react/jsx-indent-props": [0, "tab"]
+    "react/jsx-indent-props": [0, "tab"],
+    "jsx-a11y/img-has-alt": 0
   },
     "globals": {
         "document": true,

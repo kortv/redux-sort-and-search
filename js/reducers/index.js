@@ -2,18 +2,17 @@ import * as types from '../constants/ActionTypes';
 import { INITIAL_STATE } from '../constants/InitialState';
 
 export default function searchlist(state = INITIAL_STATE, action) {
-
   switch (action.type) {
 
     case types.ADD_FILTER:
       const filterType = action.filter.type;
       const filterFunc = (a, b) => {
-        if(state.isDesc) {
-          if(a.get(filterType) < b.get(filterType)) return -1;
-          if(a.get(filterType) > b.get(filterType)) return 1;
+        if (state.isDesc) {
+          if (a.get(filterType) < b.get(filterType)) return -1;
+          if (a.get(filterType) > b.get(filterType)) return 1;
         } else {
-          if(a.get(filterType) > b.get(filterType)) return -1;
-          if(a.get(filterType) < b.get(filterType)) return 1;
+          if (a.get(filterType) > b.get(filterType)) return -1;
+          if (a.get(filterType) < b.get(filterType)) return 1;
         }
         return 0;
       };
@@ -23,8 +22,8 @@ export default function searchlist(state = INITIAL_STATE, action) {
         ...state,
         filteredData: sortedData,
         isDesc: !state.isDesc,
-        activeUser: sortedData.get(0)
-      }
+        activeUser: sortedData.get(0),
+      };
 
     case types.SEARCH_TEXT:
       const filter = x => x.get('name').toLowerCase().includes(action.text.toLowerCase());
@@ -32,14 +31,14 @@ export default function searchlist(state = INITIAL_STATE, action) {
       return {
         ...state,
         filteredData,
-        activeUser: filteredData.get(0)
-      }
+        activeUser: filteredData.get(0),
+      };
 
     case types.CHANGE_ACTIVE:
       return {
         ...state,
-        activeUser: state.data.get(action.id)
-      }
+        activeUser: state.data.get(action.id),
+      };
 
     case types.RECEIVE_USERS:
       return {
@@ -47,8 +46,8 @@ export default function searchlist(state = INITIAL_STATE, action) {
         filteredData: action.data,
         data: action.data,
         activeUser: action.data.get(0),
-        isFetching: false
-      }
+        isFetching: false,
+      };
 
     default:
       return state;
