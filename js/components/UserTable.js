@@ -9,13 +9,12 @@ export default class UserTable extends Component {
 
     if (userData) {
       userRows = userData.map((user) => (
-          <UserRow
-            user={user}
-            key={user.get('id')}
-            activeUserChanged={this.props.activeUserChanged.bind(this)}
-          />
-        )
-      );
+        <UserRow
+          user={user}
+          key={user.get('id')}
+          activeUserChanged={this.props.activeUserChanged.bind(this)}
+        />
+      ));
     }
 
     const isDataLoaded = !this.props.isFetching;

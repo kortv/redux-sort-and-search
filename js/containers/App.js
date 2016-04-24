@@ -14,7 +14,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-          <SearchApp store={store} />
+        <SearchApp store={store} />
       </Provider>
     );
   }
