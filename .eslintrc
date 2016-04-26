@@ -29,6 +29,7 @@
     "globals": {
         "document": true,
         "window": true,
+        "fetch": true,
         "_": true
     }
 }

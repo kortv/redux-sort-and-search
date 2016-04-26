@@ -7,8 +7,8 @@ import { fetchUsers } from '../actions';
 
 export default class App extends Component {
 
-  componentWillMount() {
-    store.dispatch(fetchUsers(this.props.store));
+  componentDidMount() {
+    store.dispatch(fetchUsers(store));
   }
 
   render() {

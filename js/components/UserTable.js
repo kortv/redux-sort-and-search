@@ -12,7 +12,7 @@ export default class UserTable extends Component {
         <UserRow
           user={user}
           key={user.get('id')}
-          activeUserChanged={this.props.activeUserChanged.bind(this)}
+          activeUserChanged={this.props.activeUserChanged}
         />
       ));
     }

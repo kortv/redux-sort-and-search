@@ -4,36 +4,34 @@ import Immutable from 'immutable';
 export function addFilter(filter) {
   return {
     type: types.ADD_FILTER,
-    filter
+    filter,
   };
 }
 
 export function searchText(text) {
   return {
     type: types.SEARCH_TEXT,
-    text
+    text,
   };
 }
 
 export function changeActive(id) {
   return {
     type: types.CHANGE_ACTIVE,
-    id
+    id,
   };
 }
 
 function receiveUsers(data) {
   return {
     type: types.RECEIVE_USERS,
-    data
+    data,
   };
 }
 
 export function fetchUsers(store) {
-  return (dispatch) => {
-    return fetch('http://rtivital.github.io/react-challenge-sort-and-search-solution/data.json')
+  return () => fetch('http://rtivital.github.io/react-challenge-sort-and-search-solution/data.json')
       .then(response => response.json())
       .then(json => store.dispatch(receiveUsers(Immutable.fromJS(json))))
       .catch(ex => console.log('parsing failed', ex));
-  };
 }

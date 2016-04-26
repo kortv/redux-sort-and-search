@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -13,26 +13,26 @@ class SearchApp extends Component {
     this.store = this.props.store;
   }
 
-  onKeyUp(value) {
-    this.store.dispatch(searchText(value));
+  onKeyUp = (e) => {
+    this.store.dispatch(searchText(e.target.value));
   }
 
-  activeUserChanged(id) {
+  onSorted = (type) => {
+    this.store.dispatch(addFilter({ type }));
+  }
+
+  activeUserChanged = (id) => {
     this.store.dispatch(changeActive(id));
   }
 
-  onSorted(type) {
-    this.store.dispatch(addFilter({type}));
-  }
-
-  render () {
+  render() {
     const state = this.store.getState();
 
     return (
       <div className="app container-fluid">
-        <SearchBar onKeyUp={this.onKeyUp.bind(this)} />
+        <SearchBar onKeyUp={this.onKeyUp} />
 
-        <ToolBar onSorted={this.onSorted.bind(this)} />
+        <ToolBar onSorted={this.onSorted} />
 
         <div className="row">
           <div className="col-sm-4 col-md-3 col-lg-2">
@@ -42,7 +42,7 @@ class SearchApp extends Component {
             <UserTable
               isFetching={state.isFetching}
               userData={state.filteredData}
-              activeUserChanged={this.activeUserChanged.bind(this)}
+              activeUserChanged={this.activeUserChanged}
             />
           </div>
         </div>
@@ -51,15 +51,13 @@ class SearchApp extends Component {
   }
 }
 
-
-
 function mapState(state) {
   return state;
 }
 
 function mapDispatch(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
   };
 }
 
