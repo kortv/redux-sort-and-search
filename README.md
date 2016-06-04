@@ -1,7 +1,6 @@
 #Redux-sort-search
 
 npm i
-
 <br/>
 webpack-dev-server
 <br/>
