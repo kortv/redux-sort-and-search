@@ -8,10 +8,10 @@ export default class UserTable extends Component {
     let userRows = [];
 
     if (userData) {
-      userRows = userData.map((user) => (
+      userRows = userData.map((user, key) => (
         <UserRow
           user={user}
-          key={user.get('id')}
+          key={key}
           activeUserChanged={this.props.activeUserChanged}
         />
       ));
